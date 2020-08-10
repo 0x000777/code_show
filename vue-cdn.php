@@ -182,10 +182,10 @@ if( CAJAX::isAjax() ) {
 
 				// заносим в выписку
 				$HISTORY_PARAMS = array(
-                    'ID_ELEMENT' => $_POST['ID_ORDER'],
-                    'STATUS'     => 3,
-                    'PRICE'      => $ORDER_INFO['TOTAL_PRICE'],
-                    'ID_USER'    => $ORDER_INFO['ID_USER'],
+					'ID_ELEMENT' => $_POST['ID_ORDER'],
+					'STATUS'     => 3,
+					'PRICE'      => $ORDER_INFO['TOTAL_PRICE'],
+					'ID_USER'    => $ORDER_INFO['ID_USER'],
 				);
 				CUSER::insertHistory( $HISTORY_PARAMS );
 				if( $db1->error()['code'] != 0 ) {
