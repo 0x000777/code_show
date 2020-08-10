@@ -39,17 +39,17 @@ if( CAJAX::isAjax() ) {
 			$POINT_INFO = MPLACE::getRetailsByID( $val['ID_POINT'] );
 
 			$tmp = array(
-				'id' => (int)$val['ID_ITEM'],
-				'idCity' => (int)$POINT_INFO['ID_PLACE'],
-				'idPoint' => (int)$POINT_INFO['ID_ITEM'],
-				'status' => (int)$val['STATUS'],
-				'phone' => $val['PHONE'],
-				'ip' => $val['IP_ADDRESS'],
-				'city' => $POINT_INFO['CITY_NAME'],
-				'region' => $POINT_INFO['CITY_REGION'],
-				'adress' => $POINT_INFO['ADDRESS'],
+				'id'         => (int)$val['ID_ITEM'],
+				'idCity'     => (int)$POINT_INFO['ID_PLACE'],
+				'idPoint'    => (int)$POINT_INFO['ID_ITEM'],
+				'status'     => (int)$val['STATUS'],
+				'phone'      => $val['PHONE'],
+				'ip'         => $val['IP_ADDRESS'],
+				'city'       => $POINT_INFO['CITY_NAME'],
+				'region'     => $POINT_INFO['CITY_REGION'],
+				'adress'     => $POINT_INFO['ADDRESS'],
 				'totalPrice' => (int)$val['TOTAL_PRICE'],
-				'goods' => array(),
+				'goods'      => array(),
 			);
 
 			// даты
@@ -214,8 +214,8 @@ if( CAJAX::isAjax() ) {
 
 
 		$PARAMS = array(
-			'ID_CITY' => $POINT_INFO['ID_PLACE'],
-			'ADDRESS' => $POINT_INFO['ADDRESS'],
+			'ID_CITY'  => $POINT_INFO['ID_PLACE'],
+			'ADDRESS'  => $POINT_INFO['ADDRESS'],
 			'ID_POINT' => $_POST['ID_POINT'],
 		);
 		$ORDERS = MADMINSTOREORDER::updateOrderDB( $_POST['ID_ORDER'], $PARAMS );
@@ -255,17 +255,17 @@ foreach( $CITY_LIST as $CITY_key => $CITY_val ) {
 	$POINT_JSON = array();
 	foreach( $POINTS_LIST as $POINTS_key => $POINTS_val ) {
 		$POINT_JSON[] = array(
-			'id' => (int)$POINTS_val['ID_ITEM'],
+			'id'      => (int)$POINTS_val['ID_ITEM'],
 			'address' => $POINTS_val['ADDRESS'],
-			'geoLat' => (float)$POINTS_val['GEO_LAT'],
-			'geoLon' => (float)$POINTS_val['GEO_LON'],
-			'time' => $POINTS_val['TIME'],
+			'geoLat'  => (float)$POINTS_val['GEO_LAT'],
+			'geoLon'  => (float)$POINTS_val['GEO_LON'],
+			'time'    => $POINTS_val['TIME'],
 		);
 	}
 
 	$CITY_JSON[] = array(
-		'id' => (int)$CITY_val['ID_ITEM'],
-		'name' => $CITY_val['NAME'],
+		'id'     => (int)$CITY_val['ID_ITEM'],
+		'name'   => $CITY_val['NAME'],
 		'region' => $CITY_val['REGION'],
 		'points' => $POINT_JSON,
 	);
@@ -853,15 +853,15 @@ var app = new Vue({
 
 			self.filters.isLoading = true;
 			axios.post(window.location.pathname, querystring.stringify({
-				op: 'getOrder',
-				SEARCH: self.filters.search,
-				DATEFROM: self.filters.dateFrom,
-				DATETO: self.filters.dateTo,
-				CITY: self.filters.city,
-				STATUS: self.filters.status,
-				SORT: self.filters.sort,
-				START: start,
-				COUNT: count,
+				op       : 'getOrder',
+				SEARCH   : self.filters.search,
+				DATEFROM : self.filters.dateFrom,
+				DATETO   : self.filters.dateTo,
+				CITY     : self.filters.city,
+				STATUS   : self.filters.status,
+				SORT     : self.filters.sort,
+				START    : start,
+				COUNT    : count,
 			})).then(function ( res ) {
 				if( res.data.response != undefined ) {
 					if(type == 'new' || type == 'renew') {
